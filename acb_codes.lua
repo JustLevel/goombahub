@@ -23,7 +23,10 @@ local codes = {
   '2KLIKES!',
   '1KLIKES!',
   'THANKS4PLAYING!',
-  'RELEASE!'
+  'RELEASE!',
+  '60KLIKES!',
+  '40MVISITS!',
+  'UPDATE5!'
 }
 
 return codes
