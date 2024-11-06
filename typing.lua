@@ -1,4 +1,4 @@
-if game.PlaceId == 12886143095 then
+if game.PlaceId == 12886143095 or game.PlaceId == 18583778121 then
 
 local args = {
     [1] = "GetGlobalData"
