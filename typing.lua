@@ -1,4 +1,4 @@
-repeat task.wait() until game:IsLoaded()
+    repeat task.wait() until game:IsLoaded()
 if game.PlaceId == 12886143095 or game.PlaceId == 18583778121 then
 
 local args = {
@@ -26,5 +26,5 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("InfiniteCastleManager"):FireServer(unpack(args))
 end
 
-while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait(2) end; game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
+while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait(4) end; game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
 
