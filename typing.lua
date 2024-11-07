@@ -30,5 +30,5 @@ else
     }
     game:GetService("ReplicatedStorage").Remotes.PlaceTower:FireServer(unpack(args))
 
-    while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait() end wait(4) game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
+    while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait() end wait() game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
 end
