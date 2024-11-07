@@ -26,5 +26,5 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("InfiniteCastleManager"):FireServer(unpack(args))
 end
 
-while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait() end; game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
+while not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("EndGameUI") do wait(2) end; game:GetService("ReplicatedStorage").Remotes.TeleportBack:FireServer()
 
