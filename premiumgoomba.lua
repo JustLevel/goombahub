@@ -10,7 +10,7 @@ local games = {
 
 if games[game.CreatorId] then
 	task.wait(math.random())
-	if game.CreatorId == 0 then
+	if game.CreatorId == 33820338 then
 		print('in')
 		repeat 
 			loadstring(game:HttpGet(games[game.CreatorId]))()
