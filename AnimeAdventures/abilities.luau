@@ -12,7 +12,6 @@ local abilities = {
   'aki_evolved', 
   'law_2_evolved', 
   'brook_evolved', 
-  'gojo_evolved', 
   'pucci_heaven',
   'jotaro_p6_evolved', 
   'homura_evolved', 
