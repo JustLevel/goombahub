@@ -21,7 +21,8 @@ local abilities = {
   'aizen_christmas',
   'gojo_evolved',
   'goku_ssj3_evolved',
-  'vegeta_majin_evolved'
+  'vegeta_majin_evolved',
+  ''
 }
 
 return abilities;
