@@ -19,8 +19,8 @@ local abilities = {
   'armin',
   'aizen_christmas',
   'gojo_evolved',
-  'goku_ssj3',
-  'vegeta_majin',
+  'goku_ssj3_evolved',
+  'vegeta_majin_evolved',
   ''
 }
 
