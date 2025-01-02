@@ -1,4 +1,4 @@
-local abilities = {
+local tabl = {
   'hidan_unit_evolved', 
   'stain_evolved',
   'dazai_evolved', 
@@ -7,17 +7,21 @@ local abilities = {
   'eren_final', 
   'ainz_evolved', 
   'kisuke_evolved',
-  'yamamoto_evolved', 
+	'yamamoto_evolved', 
   'dio_heaven', 
   'aki_evolved', 
   'law_2_evolved', 
   'brook_evolved', 
   'gojo_evolved', 
   'pucci_heaven',
-  'jotaro_p6_evolved', 
+	'jotaro_p6_evolved', 
   'homura_evolved', 
   'diavolo', 
-  'armin'
+  'armin',
+  'aizen_christmas',
+  'gojo_evolved',
+  'goku_ssj3_evolved',
+  'vegeta_majin_evolved'
 }
 
-return abilities;
+return tabl;
