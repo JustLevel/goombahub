@@ -21,7 +21,7 @@ local abilities = {
   'gojo_evolved',
   'goku_ssj3_evolved',
   'vegeta_majin_evolved',
-  ''
+  'femto_egg'
 }
 
 return abilities;
