@@ -47,3 +47,5 @@ local DungeonItems = {
     ["Curse of Chaos"] = "_curse_super_chaos",
     ["Random Curse"] = "_curse_random"
 }
+
+return DungeonItems;
