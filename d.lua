@@ -59,17 +59,17 @@ do
 
 		local ButtonFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 
 		local button = Instance.new("Frame")
 		button.Name = "Button"
-		button.AutomaticSize = Enum.AutomaticSize.XY
+		button.AutomaticSize = Enum.AutomaticSize.Y
 		button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		button.BackgroundTransparency = 1
 		button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		button.BorderSizePixel = 0
-		button.Size = UDim2.new(1, 0, 0, 38)
+		button.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		button.Parent = section
 
 		local buttonInteract = Instance.new("TextButton")
@@ -150,16 +150,16 @@ do
 
 		local ToggleFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local toggle = Instance.new("Frame")
 		toggle.Name = "Toggle"
-		toggle.AutomaticSize = Enum.AutomaticSize.XY
+		toggle.AutomaticSize = Enum.AutomaticSize.Y
 		toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		toggle.BackgroundTransparency = 1
 		toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		toggle.BorderSizePixel = 0
-		toggle.Size = UDim2.new(1, 0, 0, 38)
+		toggle.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		toggle.Parent = section
 
 		local toggleName = Instance.new("TextLabel")
@@ -278,6 +278,162 @@ do
 			toggleName.Text = tostring(Name)
 		end
 
+		function ToggleFunctions:CreateAddon()
+			local addons = {}
+
+			local MainGUI = game.CoreGui:FindFirstChild("MacLibAddon")
+			if not MainGUI then
+				MainGUI = Instance.new("ScreenGui")
+				MainGUI.Parent = (isStudio and LocalPlayer.PlayerGui) or game.CoreGui
+				MainGUI.Name = "MacLibAddon"
+				MainGUI.DisplayOrder = 2000
+				local uiScale = Instance.new("UIScale")
+				uiScale.Scale = MacLib.scale.Scale or 1
+				uiScale.Parent = MainGUI
+				
+				MacLib.scale.Changed:Connect(function()
+					uiScale.Scale = MacLib.scale.Scale
+				end)
+			end
+			
+			local toggle2 = Instance.new("ImageButton")
+			toggle2.Name = "Toggle"
+			toggle2.Image = "rbxassetid://10734950309"
+			toggle2.ImageColor3 = Color3.fromRGB(120, 120, 120)
+			toggle2.AutoButtonColor = false
+			toggle2.AnchorPoint = Vector2.new(1, 0.5)
+			toggle2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			toggle2.BackgroundTransparency = 1
+			toggle2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			toggle2.BorderSizePixel = 0
+			toggle2.Position = UDim2.fromScale(0.8, 0.5)
+			toggle2.Size = UDim2.fromOffset(21, 18)
+			toggle2.Parent = toggle
+			toggle2.ZIndex = 999
+
+			local MainFrame = Instance.new("Frame")
+			MainFrame.Name = "AddonsFrame"
+			MainFrame.AutomaticSize = Enum.AutomaticSize.XY
+			MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			MainFrame.BackgroundTransparency = 0.2
+			MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			MainFrame.BorderSizePixel = 0
+			MainFrame.Parent = MainGUI
+			MainFrame.ZIndex = 999
+			
+			MainFrame.DescendantAdded:Connect(function(cc)
+				if cc:IsA("GuiObject") then
+					cc.ZIndex = 1005
+				end
+			end)
+
+			local globalSettingsUIStroke = Instance.new("UIStroke")
+			globalSettingsUIStroke.Name = "GlobalSettingsUIStroke"
+			globalSettingsUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+			globalSettingsUIStroke.Color = Color3.fromRGB(255, 255, 255)
+			globalSettingsUIStroke.Transparency = 0.9
+			globalSettingsUIStroke.Parent = MainFrame
+
+			local globalSettingsUICorner = Instance.new("UICorner")
+			globalSettingsUICorner.Name = "GlobalSettingsUICorner"
+			globalSettingsUICorner.CornerRadius = UDim.new(0, 10)
+			globalSettingsUICorner.Parent = MainFrame
+
+			local globalSettingsUIPadding = Instance.new("UIPadding")
+			globalSettingsUIPadding.Name = "GlobalSettingsUIPadding"
+			globalSettingsUIPadding.PaddingBottom = UDim.new(0, 20)
+			globalSettingsUIPadding.PaddingTop = UDim.new(0, 22)
+			globalSettingsUIPadding.PaddingLeft = UDim.new(0, 25)
+			globalSettingsUIPadding.PaddingRight = UDim.new(0, 20)
+			globalSettingsUIPadding.Parent = MainFrame
+
+			local globalSettingsUIListLayout = Instance.new("UIListLayout")
+			globalSettingsUIListLayout.Name = "GlobalSettingsUIListLayout"
+			globalSettingsUIListLayout.Padding = UDim.new(0, 5)
+			globalSettingsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+			globalSettingsUIListLayout.Parent = MainFrame
+
+			local globalSettingsUIScale = Instance.new("UIScale")
+			globalSettingsUIScale.Name = "UIScale"
+			globalSettingsUIScale.Scale = 1e-07
+			globalSettingsUIScale.Parent = MainFrame
+			
+			local function tog_e2()
+				globalSettingsUIScale.Scale = globalSettingsUIScale.Scale == 1 and 1e-07 or 1
+			end
+
+			local function updateFramePosition()
+				local screenSize = MainGUI.AbsoluteSize
+				local buttonPos = toggle2.AbsolutePosition
+				local buttonSize = toggle2.AbsoluteSize
+				
+				local posXScale = (buttonPos.X + buttonSize.X) / screenSize.X
+				local posYScale = (buttonPos.Y + buttonSize.Y) / screenSize.Y
+				local sizeXScale = buttonSize.X / screenSize.X
+				local sizeYScale = buttonSize.Y / screenSize.Y
+				
+				MainFrame.Position = UDim2.new(posXScale, 0, posYScale, 0)
+			end
+
+			local function isOutOfFrame()
+				local buttonPos = toggle2.AbsolutePosition
+				local buttonSize = toggle2.AbsoluteSize
+				local containerPos = section.Parent.Parent.AbsolutePosition
+				local containerSize = section.Parent.Parent.AbsoluteSize
+
+				local outOfBounds = 
+					buttonPos.Y + buttonSize.Y < containerPos.Y or
+					buttonPos.Y > containerPos.Y + containerSize.Y or
+					buttonPos.X + buttonSize.X < containerPos.X or
+					buttonPos.X > containerPos.X + containerSize.X
+
+				return outOfBounds
+			end
+
+			updateFramePosition()
+
+			toggle2:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+				updateFramePosition()
+				local s, e = pcall(isOutOfFrame)
+				if s and e then
+					globalSettingsUIScale.Scale = 1e-07
+				end
+			end)
+			toggle2:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				updateFramePosition()
+				local s, e = pcall(isOutOfFrame)
+				if s and e then
+					globalSettingsUIScale.Scale = 1e-07
+				end
+			end)
+			
+			MacLib.base:GetPropertyChangedSignal("Visible"):Connect(function()
+				if not MacLib.base.Visible then
+					globalSettingsUIScale.Scale = 1e-07
+				end
+			end)
+			
+			toggle2.AncestryChanged:Connect(function()
+				globalSettingsUIScale.Scale = 1e-07
+			end)
+			
+			toggle2.MouseEnter:Connect(function()
+				toggle2.ImageColor3 = Color3.fromRGB(209, 209, 209)
+			end)
+			toggle2.MouseLeave:Connect(function()
+				toggle2.ImageColor3 = Color3.fromRGB(120, 120, 120)
+			end)
+			
+			toggle2.MouseButton1Click:Connect(tog_e2)
+
+			addons.addons = MainFrame
+
+			setmetatable(addons, SectionFunctions)
+
+			return addons
+
+		end
+
 		return ToggleFunctions
 
 	end
@@ -294,16 +450,17 @@ do
 
 		local SliderFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local slider = Instance.new("Frame")
 		slider.Name = "Slider"
-		slider.AutomaticSize = Enum.AutomaticSize.XY
+		slider.AutomaticSize = Enum.AutomaticSize.Y
 		slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		slider.BackgroundTransparency = 1
 		slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		slider.BorderSizePixel = 0
-		slider.Size = UDim2.new(1, 0, 0, 38)
+		slider.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
+		slider.ClipsDescendants = true
 		slider.Parent = section
 
 		local sliderName = Instance.new("TextLabel")
@@ -322,7 +479,7 @@ do
 		sliderName.BackgroundTransparency = 1
 		sliderName.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		sliderName.BorderSizePixel = 0
-		sliderName.Position = UDim2.fromScale(1.3e-07, 0.5)
+		sliderName.Position = UDim2.fromScale(1.3e-07, 0.15)
 		sliderName.Parent = slider
 
 		local sliderElements = Instance.new("Frame")
@@ -389,7 +546,7 @@ do
 		sliderBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		sliderBar.BorderSizePixel = 0
 		sliderBar.Position = UDim2.fromScale(0.219, 0.457)
-		sliderBar.Size = UDim2.fromOffset(123, 3)
+		sliderBar.Size = UDim2.fromOffset(160, 3)
 
 		local sliderHead = Instance.new("ImageButton")
 		sliderHead.Name = "SliderHead"
@@ -512,21 +669,6 @@ do
 			end
 		end)
 
-		local function updateSliderBarSize()
-			local padding = sliderElementsUIListLayout.Padding.Offset
-			local sliderValueWidth = sliderValue.AbsoluteSize.X
-			local sliderNameWidth = sliderName.AbsoluteSize.X
-			local totalWidth = sliderElements.AbsoluteSize.X
-
-			local newBarWidth = totalWidth - (padding + sliderValueWidth + sliderNameWidth + 20)
-			sliderBar.Size = UDim2.new(sliderBar.Size.X.Scale, newBarWidth, sliderBar.Size.Y.Scale, sliderBar.Size.Y.Offset)
-		end
-
-		updateSliderBarSize()
-
-		sliderName:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateSliderBarSize)
-		section:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateSliderBarSize)
-
 		function SliderFunctions:UpdateName(Name)
 			sliderName = Name
 		end
@@ -549,7 +691,7 @@ do
 
 		local InputFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local input = Instance.new("Frame")
 		input.Name = "Input"
@@ -558,7 +700,7 @@ do
 		input.BackgroundTransparency = 1
 		input.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		input.BorderSizePixel = 0
-		input.Size = UDim2.new(1, 0, 0, 38)
+		input.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		input.Parent = section
 
 		local inputName = Instance.new("TextLabel")
@@ -700,7 +842,7 @@ do
 
 		local KeybindFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local keybind = Instance.new("Frame")
 		keybind.Name = "Keybind"
@@ -709,7 +851,7 @@ do
 		keybind.BackgroundTransparency = 1
 		keybind.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		keybind.BorderSizePixel = 0
-		keybind.Size = UDim2.new(1, 0, 0, 38)
+		keybind.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		keybind.Parent = section
 
 		local keybindName = Instance.new("TextLabel")
@@ -842,7 +984,7 @@ do
 		local OptionObjs = {}
 		local _dropdown_callback = Settings.Callback
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local dropdown = Instance.new("Frame")
 		dropdown.Name = "Dropdown"
@@ -850,7 +992,7 @@ do
 		dropdown.BackgroundTransparency = 0.985
 		dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		dropdown.BorderSizePixel = 0
-		dropdown.Size = UDim2.new(1, 0, 0, 38)
+		dropdown.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		dropdown.Parent = section
 		dropdown.ClipsDescendants = true
 
@@ -1266,7 +1408,8 @@ do
 		local function ToggleDropdown()
 			local defaultDropdownSize = 38
 			local isDropdownOpen = not dropped
-			local targetSize = isDropdownOpen and UDim2.new(1, 0, 0, CalculateDropdownSize()) or UDim2.new(1, 0, 0, defaultDropdownSize)
+			local isAddon = self.addons ~= nil
+			local targetSize = isDropdownOpen and UDim2.new(isAddon and 0 or 1, isAddon and 250 or 0, 0, CalculateDropdownSize()) or UDim2.new(isAddon and 0 or 1, isAddon and 250 or 0, 0, defaultDropdownSize)
 
 			dropdown.Size = targetSize
 
@@ -1312,40 +1455,40 @@ do
 			UpdateDropdown()
 		end
 
-    function DropdownFunctions:Set(Value)
-      if Settings.Multi then
-        if typeof(Value) == "table" then
-          if #Value == 0 then
-            for optionName, optionObj in pairs(OptionObjs) do
-              if table.find(Selected, optionName) then
-                Toggle(optionName, false)
-              end
-            end
-          else
-            for xz, zx in pairs(Value) do
-              if not table.find(Selected, zx) then
-                if OptionObjs[zx] then
-                  OptionObjs[zx].Toggle()
+        function DropdownFunctions:Set(Value)
+            if Settings.Multi then
+                if typeof(Value) == "table" then
+                    if #Value == 0 then
+                        for optionName, optionObj in pairs(OptionObjs) do
+                            if table.find(Selected, optionName) then
+                                Toggle(optionName, false)
+                            end
+                        end
+                    else
+                        for xz, zx in pairs(Value) do
+                            if not table.find(Selected, zx) then
+                                if OptionObjs[zx] then
+                                    OptionObjs[zx].Toggle()
+                                end
+                            end
+                        end
+                    end
                 end
-              end
+            else
+                if not table.find(Selected, Value) then
+                    if #Selected >= 1 then
+                        for xz, zx in pairs(OptionObjs) do
+                            if xz ~= Value then
+                                zx.Toggle()
+                            end
+                        end
+                    end
+                    if OptionObjs[Value] then
+                        OptionObjs[Value].Toggle()
+                    end
+                end
             end
-          end
         end
-      else
-        if not table.find(Selected, Value) then
-          if #Selected >= 1 then
-            for xz, zx in pairs(OptionObjs) do
-              if xz ~= Value then
-                zx.Toggle()
-              end
-            end
-          end
-          if OptionObjs[Value] then
-            OptionObjs[Value].Toggle()
-          end
-        end
-      end
-    end
 
 		UpdateDropdown()
 		ResetName()
@@ -1359,7 +1502,7 @@ do
 		}, Settings)
 		local HeaderFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local header = Instance.new("Frame")
 		header.Name = "Header"
@@ -1369,7 +1512,7 @@ do
 		header.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		header.BorderSizePixel = 0
 		header.LayoutOrder = 0
-		header.Size = UDim2.fromScale(1, 0)
+		header.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.fromScale(1, 0)
 		header.Parent = section
 
 		local uIPadding = Instance.new("UIPadding")
@@ -1413,7 +1556,7 @@ do
 
 		local LabelFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local label = Instance.new("Frame")
 		label.Name = "Label"
@@ -1422,7 +1565,7 @@ do
 		label.BackgroundTransparency = 1
 		label.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		label.BorderSizePixel = 0
-		label.Size = UDim2.new(1, 0, 0, 38)
+		label.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		label.Parent = section
 
 		local labelText = Instance.new("TextLabel")
@@ -1461,16 +1604,16 @@ do
 
 		local ParagraphFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local paragraph = Instance.new("Frame")
 		paragraph.Name = "Paragraph"
-		paragraph.AutomaticSize = Enum.AutomaticSize.XY
+		paragraph.AutomaticSize = Enum.AutomaticSize.Y
 		paragraph.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		paragraph.BackgroundTransparency = 1
 		paragraph.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		paragraph.BorderSizePixel = 0
-		paragraph.Size = UDim2.new(1, 0, 0, 38)
+		paragraph.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		paragraph.Parent = section
 
 		local uIPadding = Instance.new("UIPadding")
@@ -1540,7 +1683,7 @@ do
 	function Funcs:Divider()
 		local DividerFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local divider = Instance.new("Frame")
 		divider.Name = "Divider"
@@ -1551,7 +1694,7 @@ do
 		divider.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		divider.BorderSizePixel = 0
 		divider.Position = UDim2.fromScale(0, 1)
-		divider.Size = UDim2.new(1, 0, 0, 1)
+		divider.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 1)
 		divider.Parent = section
 
 		local uIPadding = Instance.new("UIPadding")
@@ -1584,7 +1727,7 @@ do
 	function Funcs:Spacer()
 		local SpacerFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local spacer = Instance.new("Frame")
 		spacer.Name = "Spacer"
@@ -1609,7 +1752,7 @@ do
 		}, Settings)
 
 		local SubLabelFunctions = {}
-		local section = self.section
+		local section = self.addons or self.section
 
 		local subLabel = Instance.new("Frame")
 		subLabel.Name = "SubLabel"
@@ -1656,7 +1799,7 @@ do
 
 		local ColorpickerFunctions = {}
 
-		local section = self.section
+		local section = self.addons or self.section
 
 		local isAlpha = Settings.Alpha and true or false
 		ColorpickerFunctions.Color = Settings.Default
@@ -1669,7 +1812,7 @@ do
 		colorpicker.BackgroundTransparency = 1
 		colorpicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		colorpicker.BorderSizePixel = 0
-		colorpicker.Size = UDim2.new(1, 0, 0, 38)
+		colorpicker.Size = self.addons and UDim2.new(0, 250, 0, 38) or UDim2.new(1, 0, 0, 38)
 		colorpicker.Parent = section
 		colorpicker.ZIndex = 10
 		colorpicker.Active = true
@@ -3054,7 +3197,7 @@ do
 		tabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		tabSwitcher.BorderSizePixel = 0
 		tabSwitcher.Position = UDim2.fromScale(0.5, 0)
-		tabSwitcher.Size = UDim2.new(1, -21, 0, 40)
+		tabSwitcher.Size = UDim2.new(1, -21, 0, 34)
 
 		tabIndex += 1
 		tabSwitcher.LayoutOrder = tabIndex
@@ -3371,7 +3514,7 @@ function MacLib:Window(Settings)
 		Title = "Goomba Hub",
 		Subtitle = "",
 		Size = UDim2.fromOffset(868, 650),
-		Scale = 0.7,
+		Scale = 1,
 		AcrylicBlur = false,
 		Keybind = Enum.KeyCode.RightControl,
 		ShowUserInfo = false
@@ -3425,7 +3568,7 @@ function MacLib:Window(Settings)
 	base.Name = "Base"
 	base.AnchorPoint = Vector2.new(0.5, 0.5)
 	base.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-	base.BackgroundTransparency = Settings.AcrylicBlur and 0.05 or 0
+	base.BackgroundTransparency = Settings.AcrylicBlur and 0.1 or 0
 	base.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	base.BorderSizePixel = 0
 	base.Position = UDim2.fromScale(0.5, 0.5)
@@ -3437,6 +3580,8 @@ function MacLib:Window(Settings)
 	local baseUIScale = Instance.new("UIScale")
 	baseUIScale.Name = "BaseUIScale"
 	baseUIScale.Parent = base
+	baseUIScale.Scale = 1
+	MacLib.scale = baseUIScale
 
 	if Settings.Scale ~= nil and tonumber(Settings.Scale) then
 		baseUIScale.Scale = tonumber(Settings.Scale)
@@ -3876,6 +4021,7 @@ function MacLib:Window(Settings)
 	globalSettings.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	globalSettings.BorderSizePixel = 0
 	globalSettings.Position = UDim2.fromScale(0.298, 0.104)
+	globalSettings.BackgroundTransparency = Settings.AcrylicBlur and 0.2 or 0.7
 
 	local globalSettingsUIStroke = Instance.new("UIStroke")
 	globalSettingsUIStroke.Name = "GlobalSettingsUIStroke"
@@ -3923,15 +4069,8 @@ function MacLib:Window(Settings)
 	end
 
 	local hovering
-	local toggled = globalSettingsUIScale.Scale == 1 and true or false
 	local function toggle()
-		if not toggled then
-			globalSettingsUIScale.Scale = 1
-			toggled = true
-		elseif toggled then
-			globalSettingsUIScale.Scale = 0
-			toggled = false
-		end
+		globalSettingsUIScale.Scale = globalSettingsUIScale.Scale == 1 and 1e-07 or 1
 	end
 	globalSettingsButton.MouseButton1Click:Connect(function()
 		if not hasGlobalSetting then return end
@@ -3944,7 +4083,7 @@ function MacLib:Window(Settings)
 		hovering = false
 	end)
 	UserInputService.InputEnded:Connect(function(inp)
-		if inp.UserInputType == Enum.UserInputType.MouseButton1 and toggled and not hovering then
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 and globalSettingsUIScale.Scale == 1 and not hovering then
 			toggle()
 		end
 	end)
@@ -4282,6 +4421,8 @@ function MacLib:Window(Settings)
 			dialogCanvas.Size = UDim2.fromScale(1, 1)
 			dialogCanvas.GroupTransparency = 1
 			dialogCanvas.Parent = base
+			dialogCanvas.ZIndex = 999
+			dialogCanvas.Active = true
 
 			local dialog = Instance.new("Frame")
 			dialog.Name = "Dialog"
@@ -4290,6 +4431,8 @@ function MacLib:Window(Settings)
 			dialog.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			dialog.BorderSizePixel = 0
 			dialog.Size = UDim2.fromScale(1, 1)
+			dialog.ZIndex = 999
+			dialog.Active = true
 
 			local baseUICorner = Instance.new("UICorner")
 			baseUICorner.Name = "BaseUICorner"
@@ -4305,6 +4448,8 @@ function MacLib:Window(Settings)
 			prompt.BorderSizePixel = 0
 			prompt.Position = UDim2.fromScale(0.5, 0.5)
 			prompt.Size = UDim2.fromOffset(280, 0)
+			prompt.ZIndex = 999
+			prompt.Active = true
 
 			local globalSettingsUIStroke = Instance.new("UIStroke")
 			globalSettingsUIStroke.Name = "GlobalSettingsUIStroke"
@@ -4334,6 +4479,8 @@ function MacLib:Window(Settings)
 			paragraph.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			paragraph.BorderSizePixel = 0
 			paragraph.Size = UDim2.new(1, 0, 0, 38)
+			paragraph.ZIndex = 999
+			paragraph.Active = true
 
 			local paragraphHeader = Instance.new("TextLabel")
 			paragraphHeader.Name = "ParagraphHeader"
@@ -4355,6 +4502,8 @@ function MacLib:Window(Settings)
 			paragraphHeader.BorderSizePixel = 0
 			paragraphHeader.Size = UDim2.fromScale(1, 0)
 			paragraphHeader.Parent = paragraph
+			paragraphHeader.ZIndex = 999
+			paragraphHeader.Active = true
 
 			local uIListLayout = Instance.new("UIListLayout")
 			uIListLayout.Name = "UIListLayout"
@@ -4383,6 +4532,8 @@ function MacLib:Window(Settings)
 			paragraphBody.LayoutOrder = 1
 			paragraphBody.Size = UDim2.fromScale(1, 0)
 			paragraphBody.Parent = paragraph
+			paragraphBody.ZIndex = 999
+			paragraphBody.Active = true
 
 			paragraph.Parent = prompt
 
@@ -4395,6 +4546,8 @@ function MacLib:Window(Settings)
 			interactions.BorderSizePixel = 0
 			interactions.LayoutOrder = 1
 			interactions.Size = UDim2.fromScale(1, 0)
+			interactions.ZIndex = 1000
+			interactions.Active = true
 
 			local uIListLayout1 = Instance.new("UIListLayout")
 			uIListLayout1.Name = "UIListLayout"
@@ -4448,6 +4601,8 @@ function MacLib:Window(Settings)
 				button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				button.BorderSizePixel = 0
 				button.Size = UDim2.fromScale(1, 0)
+				button.ZIndex = 1001
+				button.Active = true
 
 				local uIPadding1 = Instance.new("UIPadding")
 				uIPadding1.Name = "UIPadding"
@@ -4569,7 +4724,7 @@ function MacLib:Window(Settings)
 	function WindowFunctions:GetAcrylicBlurState()
 		return acrylicBlur
 	end
-	
+
 	function WindowFunctions:SetSize(Size)
 		base.Size = Size
 	end
@@ -4713,18 +4868,6 @@ function MacLib:Demo()
 					Lifetime = 5
 				})
 			end,
-		}),
-		ShowUserInfo = Window:GlobalSetting({
-			Name = "Show User Info",
-			Default = Window:GetUserInfoState(),
-			Callback = function(bool)
-				Window:SetUserInfoState(bool)
-				Window:Notify({
-					Title = "MacLib Demo",
-					Description = (bool and "Showing" or "Redacted") .. " User Info",
-					Lifetime = 5
-				})
-			end,
 		})
 	}
 
@@ -4737,7 +4880,8 @@ function MacLib:Demo()
 	}
 
 	local sections = {
-		MainSection1 = tabs.Main:Section({ Side = "Left" })
+		MainSection1 = tabs.Main:Section({ Side = "Left" }),
+		MainSection2 = tabs.Main:Section({ Side = "Right" })
 	}
 
 	sections.MainSection1:Header({
@@ -4788,6 +4932,17 @@ function MacLib:Demo()
 		end,
 	})
 
+	sections.MainSection1:Slider({
+		Name = "UI Scale",
+		Default = 1,
+		Minimum = 0.5,
+		Maximum = 2,
+		DisplayMethod = "Tenths",
+		Callback = function(Val)
+			Window:SetScale(Val)
+		end,
+	})
+
 	sections.MainSection1:Toggle({
 		Name = "Toggle",
 		Default = false,
@@ -4831,7 +4986,7 @@ function MacLib:Demo()
 	local rainbowConnection
 	local hue = 0
 
-	sections.MainSection1:Toggle({
+	local rainb = sections.MainSection1:Toggle({
 		Name = "Rainbow",
 		Default = false,
 		Callback = function(value)
@@ -4848,6 +5003,44 @@ function MacLib:Demo()
 					rainbowConnection = nil
 				end
 			end
+		end,
+		Addon = true
+	})
+
+	local rainbowAddons = rainb:CreateAddon()
+
+	rainbowAddons:Button({
+		Name = "Test",
+		Callback = function()
+			print("testing")
+		end,
+	})
+	
+	rainbowAddons:Slider({
+		name = "Test"
+	})
+	
+	rainbowAddons:Dropdown({
+		Name = "Test"
+	})
+	
+	rainbowAddons:Input({
+		Name = "Test"
+	})
+	
+	rainbowAddons:Toggle({
+		Name = "Test"
+	})
+	
+	rainbowAddons:Keybind({
+		Name = "Test"
+	})
+	
+	rainbowAddons:Colorpicker({
+		Name = "Colorpicker",
+		Default = Color3.fromRGB(0, 255, 255),
+		Callback = function(color)
+			print("Color: ", color)
 		end,
 	})
 
@@ -4911,6 +5104,228 @@ function MacLib:Demo()
 	sections.MainSection1:SubLabel({
 		Text = "Sub-Label. Lorem ipsum odor amet, consectetuer adipiscing elit."
 	})
+
+	sections.MainSection2:Header({
+		Name = "Header #1"
+	})
+
+	sections.MainSection2:Button({
+		Name = "Button",
+		Callback = function()
+			Window:Dialog({
+				Title = "MacLib Demo",
+				Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Eros vestibulum aliquet mattis, ex platea nunc.",
+				Buttons = {
+					{
+						Name = "Confirm",
+						Callback = function()
+							print("Confirmed!")
+						end,
+					},
+					{
+						Name = "Cancel"
+					}
+				}
+			})
+		end,
+	})
+
+	sections.MainSection2:Input({
+		Name = "Input",
+		Placeholder = "Input",
+		AcceptedCharacters = "All",
+		Callback = function(input)
+			Window:Notify({
+				Title = "MacLib Demo",
+				Description = "Successfully set input to " .. input
+			})
+		end
+	})
+
+	sections.MainSection2:Slider({
+		Name = "Slider",
+		Default = 50,
+		Minimum = 0,
+		Maximum = 100,
+		DisplayMethod = "Percent",
+		Callback = function(Value)
+			print("Changed to ".. Value)
+		end,
+	})
+
+	sections.MainSection2:Slider({
+		Name = "UI Scale",
+		Default = 1,
+		Minimum = 0.5,
+		Maximum = 2,
+		DisplayMethod = "Tenths",
+		Callback = function(Val)
+			Window:SetScale(Val)
+		end,
+	})
+
+	sections.MainSection2:Toggle({
+		Name = "Toggle",
+		Default = false,
+		Callback = function(value)
+			Window:Notify({
+				Title = "MacLib Demo",
+				Description = (value and "Enabled " or "Disabled ") .. "Toggle"
+			})
+		end,
+	})
+
+	sections.MainSection2:Keybind({
+		Name = "Keybind",
+		Callback = function(binded)
+			Window:Notify({
+				Title = "Demo Window",
+				Description = "Pressed keybind - "..tostring(binded.Name),
+				Lifetime = 3
+			})
+		end
+	})
+
+	sections.MainSection2:Colorpicker({
+		Name = "Colorpicker",
+		Default = Color3.fromRGB(0, 255, 255),
+		Callback = function(color)
+			print("Color: ", color)
+		end,
+	})
+
+	local alphaColorPicker = sections.MainSection2:Colorpicker({
+		Name = "Transparency Colorpicker",
+		Default = Color3.fromRGB(255,0,0),
+		Alpha = 0,
+		Callback = function(color, alpha)
+			print("Color: ", color, " Alpha: ", alpha)
+		end,
+	})
+
+	local rainbowActive
+	local rainbowConnection
+	local hue = 0
+
+	local rainb2 = sections.MainSection2:Toggle({
+		Name = "Rainbow",
+		Default = false,
+		Callback = function(value)
+			rainbowActive = value
+			if rainbowActive then
+				rainbowConnection = game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
+					hue = (hue + deltaTime * 0.1) % 1
+					local newColor = Color3.fromHSV(hue, 1, 1)
+					alphaColorPicker:SetColor(newColor)
+				end)
+			else
+				if rainbowConnection then
+					rainbowConnection:Disconnect()
+					rainbowConnection = nil
+				end
+			end
+		end,
+		Addon = true
+	})
+
+	local rainbowAddons2 = rainb2:CreateAddon()
+
+	rainbowAddons2:Button({
+		Name = "Test",
+		Callback = function()
+			print("testing")
+		end,
+	})
+
+	rainbowAddons2:Slider({
+		name = "Test"
+	})
+
+	rainbowAddons2:Dropdown({
+		Name = "Test"
+	})
+
+	rainbowAddons2:Input({
+		Name = "Test"
+	})
+
+	rainbowAddons2:Toggle({
+		Name = "Test"
+	})
+
+	rainbowAddons2:Keybind({
+		Name = "Test"
+	})
+
+	rainbowAddons2:Colorpicker({
+		Name = "Colorpicker",
+		Default = Color3.fromRGB(0, 255, 255),
+		Callback = function(color)
+			print("Color: ", color)
+		end,
+	})
+
+	local optionTable = {}
+
+	for i = 1,10 do
+		local formatted = "Option ".. tostring(i)
+		table.insert(optionTable, formatted)
+	end
+
+	local Dropdown = sections.MainSection2:Dropdown({
+		Name = "Dropdown",
+		Multi = false,
+		Required = true,
+		Options = optionTable,
+		Default = 1,
+		Callback = function(Value)
+			print("Dropdown changed: ".. Value)
+		end,
+	})
+
+	local MultiDropdown = sections.MainSection2:Dropdown({
+		Name = "Multi Dropdown",
+		Search = true,
+		Multi = true,
+		Required = false,
+		Options = optionTable,
+		Default = {"Option 1", "Option 3"},
+		Callback = function(Value)
+			local Values = {}
+			for Value, State in next, Value do
+				table.insert(Values, Value)
+			end
+			print("Mutlidropdown changed:", table.concat(Values, ", "))
+		end,
+	})
+
+	sections.MainSection2:Button({
+		Name = "Update Selection",
+		Callback = function()
+			Dropdown:Set(4)
+			MultiDropdown:SetDropdown({"Option 2", "Option 5"})
+		end,
+	})
+
+	sections.MainSection2:Divider()
+
+	sections.MainSection2:Header({
+		Text = "Header #2"
+	})
+
+	sections.MainSection2:Paragraph({
+		Header = "Paragraph",
+		Body = "Paragraph body. Lorem ipsum odor amet, consectetuer adipiscing elit. Morbi tempus netus aliquet per velit est gravida."
+	})
+
+	sections.MainSection2:Label({
+		Text = "Label. Lorem ipsum odor amet, consectetuer adipiscing elit."
+	})
+
+	sections.MainSection2:SubLabel({
+		Text = "Sub-Label. Lorem ipsum odor amet, consectetuer adipiscing elit."
+	})
+
 
 	tabs.Main:Select()
 end
