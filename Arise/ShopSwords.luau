@@ -5,6 +5,7 @@ local Swords = {
     {Name = "Jeweled Rod", Shop = "WeaponShop1", Price = 180},
     {Name = "Twin Iron Naginatas", Shop = "WeaponShop1", Price = 4500},
     {Name = "Twin Kando Blades", Shop = "WeaponShop1", Price = 400},
+    {Name = "Super Item", Shop = "WeaponShop1", Price = 2500},
     {Name = "Corsair Blade", Shop = "WeaponShop2", Price = 49000},
     {Name = "Bronze War Axe", Shop = "WeaponShop2", Price = 242000},
     {Name = "Beast Bane", Shop = "WeaponShop2", Price = 10000},
@@ -40,7 +41,13 @@ local Swords = {
     {Name = "Twin Jeweled Rods", Shop = "WeaponShop7", Price = 168000000000000},
     {Name = "Twin Crimson Rods", Shop = "WeaponShop7", Price = 84000000000000},
     {Name = "Dual Obsidian Axes", Shop = "WeaponShop7", Price = 666000000000000},
-    {Name = "Reaper's Scythe", Shop = "WeaponShop7", Price = 1330000000000000}
+    {Name = "Reaper's Scythe", Shop = "WeaponShop7", Price = 1330000000000000},
+    {Name = "Eye Rod", Shop = "WeaponShop8", Price = 2730000000000000},
+    {Name = "Dual Hybrid Axes", Shop = "WeaponShop8", Price = 5460000000000000},
+    {Name = "Double Troll Bane", Shop = "WeaponShop8", Price = 10920000000000000},
+    {Name = "Runic Axe", Shop = "WeaponShop8", Price = 21840000000000000},
+    {Name = "Twin Argent Spears", Shop = "WeaponShop8", Price = 43290000000000000},
+    {Name = "Twin Draconic Axes", Shop = "WeaponShop8", Price = 86580000000000000}
 }
 
-return Swords
+return Swords;
