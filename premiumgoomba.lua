@@ -9,7 +9,8 @@ local games = {
     --[7381705] = 'https://api.luarmor.net/files/v3/loaders/59349c34a86ce8d8b52691bc8df9a94c.lua', -- FISCH
     [9122948] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AWTD
     [10611639] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AA
-    [17219742] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua' -- AV
+    [17219742] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AV
+    [15009415] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua' -- ARX
 }
 
 if games[game.CreatorId] then
