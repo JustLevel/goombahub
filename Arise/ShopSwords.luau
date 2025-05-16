@@ -59,7 +59,13 @@ local Swords = {
     {Name = "Dual Beholder Rods", Shop = "WeaponShop10", Price = 44980000000000000000},
     {Name = "Obsidian Glaive", Shop = "WeaponShop10", Price = 91780000000000000000},
     {Name = "Twin Solar Axes", Shop = "WeaponShop10", Price = 195780000000000000000},
-    {Name = "Sacred Maul", Shop = "WeaponShop10", Price = 422500000000000000000}
+    {Name = "Sacred Maul", Shop = "WeaponShop10", Price = 422500000000000000000},
+    {Name = "Cruciform Blade", Shop = "WeaponShop11", Price = 887250000000000000000},
+    {Name = "Twin Holy War Axes", Shop = "WeaponShop11", Price = 1900000000000000000000},
+    {Name = "Oculus Blade", Shop = "WeaponShop11", Price = 3800000000000000000000},
+    {Name = "Blessed Blade", Shop = "WeaponShop11", Price = 7600000000000000000000},
+    {Name = "Twin Leviathan Blades", Shop = "WeaponShop11", Price = 15210000000000000000000},
+    {Name = "Archmage's Staff", Shop = "WeaponShop11", Price = 30420000000000000000000}
 }
 
 return Swords;
