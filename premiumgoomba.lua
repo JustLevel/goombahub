@@ -11,7 +11,8 @@ local games = {
     [10611639] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AA
     [17219742] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AV
     [15009415] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- ARX
-    [34063840] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua' -- Anime Rising
+    [34063840] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- Anime Rising
+    [35812225] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua' -- AS2
 }
 
 if games[game.CreatorId] then
