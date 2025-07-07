@@ -2,7 +2,9 @@ local Modifiers = {
   "Juggernaut Enemies",
   "Single Placement",
   "High Cost",
-  "Flying Enemies"
+  "Flying Enemies",
+  "Unsellable",
+  "Random Units",
 }
 
 return Modifiers;
