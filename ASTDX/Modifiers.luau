@@ -5,6 +5,7 @@ local Modifiers = {
   "Flying Enemies",
   "Unsellable",
   "Random Units",
+  "Single Placement",
 }
 
 return Modifiers;
