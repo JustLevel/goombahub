@@ -1,0 +1,22 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+wait(math.random())
+
+local games = {
+    [5292947] = 'https://api.luarmor.net/files/v3/loaders/c28f96b3bf6f80a484fc1ea00022e9e3.lua' -- ASTDX
+}
+
+if games[game.CreatorId] then
+	task.wait(math.random())
+	if game.CreatorId == 33820338 then
+		print('in')
+		repeat 
+			loadstring(game:HttpGet(games[game.CreatorId]))()
+			wait(10)
+		until getgenv().GoombaHub ~= nil;
+	else
+		loadstring(game:HttpGet(games[game.CreatorId]))()
+	end
+end
