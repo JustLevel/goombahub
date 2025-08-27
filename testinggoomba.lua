@@ -6,7 +6,8 @@ wait(math.random())
 
 local games = {
     [5292947] = 'https://api.luarmor.net/files/v3/loaders/0806617fdbaf4671e167f19cb8820c77.lua', -- AWTDX
-    [17219742] = 'https://api.luarmor.net/files/v3/loaders/0806617fdbaf4671e167f19cb8820c77.lua'
+    [17219742] = 'https://api.luarmor.net/files/v3/loaders/0806617fdbaf4671e167f19cb8820c77.lua',
+	[10749844] = 'https://api.luarmor.net/files/v3/loaders/0806617fdbaf4671e167f19cb8820c77.lua'
 }
 
 if games[game.CreatorId] then
