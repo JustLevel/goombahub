@@ -8,7 +8,8 @@ local games = {
     [34063840] = '884122ebe7f689f7a9677fcf49a273e0', -- AnimeRising FREE
     [35812225] = 'a31ba914b0a1382dc36f9dadaa0f14ee', -- Anime Shadow 2
     [5292947] = 'a31ba914b0a1382dc36f9dadaa0f14ee', -- ASTDX
-    [10749844] = 'a31ba914b0a1382dc36f9dadaa0f14ee' -- AG
+    [10749844] = 'a31ba914b0a1382dc36f9dadaa0f14ee', -- AG
+    [35139043] = 'a31ba914b0a1382dc36f9dadaa0f14ee' -- AC
 }
 
 return games[game.CreatorId] or nil
