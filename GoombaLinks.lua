@@ -34,7 +34,11 @@ local key_links = {
     [5292947] = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Anime_Shadow_2-ScHvwCwJsuHR',
         lootlabs = 'https://ads.luarmor.net/get_key?for=AS2_Lootlabs-iFdSQmEKPWJH'
-    } -- ASTDX
+    }, -- ASTDX
+    [34873522] = {
+        linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2-SBMOkbhyKVvq',
+        lootlabs = 'https://loot-link.com/s?W1Q9Jd7u'
+    }
 }
 
 return key_links;
