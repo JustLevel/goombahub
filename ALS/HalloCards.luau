@@ -12,7 +12,7 @@ local Cards = {
     "Fiery Surge I", "Fiery Surge II",
     "Grevious Wounds I", "Grevious Wounds II",
     "Scorching Hell I", "Scorching Hell II",
-    "Fortune Flow", "Soul Link"
+    "Fortune Flow", "Soul Link", "Seething Bloodlust"
 }
 
 return Cards;
