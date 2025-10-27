@@ -37,11 +37,11 @@ local key_links = {
     }, -- ASTDX
     [34873522] = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2-SBMOkbhyKVvq',
-        lootlabs = 'https://loot-link.com/s?W1Q9Jd7u'
+        lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2_Lootlabs-CZxtDsLHhwaK'
     },
     [12229756] = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2-SBMOkbhyKVvq',
-        lootlabs = 'https://loot-link.com/s?W1Q9Jd7u'
+        lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2_Lootlabs-CZxtDsLHhwaK'
     }
 }
 
