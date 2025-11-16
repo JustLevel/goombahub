@@ -15,9 +15,9 @@ local games = {
     [35812225] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AS2
     [5292947] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AWTDX
 	[10749844] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AG
-	[35139043] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AC
+	[35139043] = 'https://api.luarmor.net/files/v3/loaders/20c88b02f28095d0b4187d98043d91fd.lua', -- AC
 	[34873522] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- AE
-	[12229756] = 'https://api.luarmor.net/files/v3/loaders/12acd0668d7dbeb1246c3c53a26b129a.lua', -- ALS
+	[12229756] = 'https://api.luarmor.net/files/v3/loaders/daa049be0dc81633b3bca7fee91ca156.lua', -- ALS
 }
 
 if games[game.CreatorId] then
