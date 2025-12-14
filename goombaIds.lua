@@ -13,6 +13,7 @@ local games = {
     [34873522] = 'bc724ac6146f02e897dfb1900db49bee',
     [12229756] = 'bc724ac6146f02e897dfb1900db49bee',
     [35821155] = 'bc724ac6146f02e897dfb1900db49bee', -- AW
+    [33861560] = 'bc724ac6146f02e897dfb1900db49bee', -- UTD
 }
 
 return games[game.CreatorId] or nil
