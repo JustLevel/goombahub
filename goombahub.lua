@@ -20,6 +20,7 @@ local games = {
 	[12229756] = 'https://api.luarmor.net/files/v3/loaders/bc724ac6146f02e897dfb1900db49bee.lua', -- ALS
 	[35821155] = 'https://api.luarmor.net/files/v3/loaders/bc724ac6146f02e897dfb1900db49bee.lua', -- AW
 	[33861560] = 'https://api.luarmor.net/files/v3/loaders/bc724ac6146f02e897dfb1900db49bee.lua', -- UTD
+	[8204913] = 'https://api.luarmor.net/files/v3/loaders/bc724ac6146f02e897dfb1900db49bee.lua', -- UTD
 }
 
 if games[game.CreatorId] then
