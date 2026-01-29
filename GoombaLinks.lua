@@ -47,6 +47,10 @@ local key_links = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2-SBMOkbhyKVvq',
         lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_2_Lootlabs-CZxtDsLHhwaK'
     },
+    [35958846] = {
+        linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3-QnbFFEDSwilQ',
+        lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3_Lootlabs-mYRJcTnprfXk'
+    },
 }
 
 return key_links;
