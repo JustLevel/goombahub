@@ -55,6 +55,14 @@ local key_links = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3-QnbFFEDSwilQ',
         lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3_Lootlabs-mYRJcTnprfXk'
     },
+    [33161040] = {
+        linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3-QnbFFEDSwilQ',
+        lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3_Lootlabs-mYRJcTnprfXk'
+    },
+    [614697100] = {
+        linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3-QnbFFEDSwilQ',
+        lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_3_Lootlabs-mYRJcTnprfXk'
+    },
 }
 
 return key_links;
