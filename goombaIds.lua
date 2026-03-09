@@ -17,6 +17,8 @@ local games = {
     [8204913] = 'bc724ac6146f02e897dfb1900db49bee', -- UTD OG
     [35958846] = '69402a07bdc647b012c6a654eb0868a1', -- AP
     [35757133] = '69402a07bdc647b012c6a654eb0868a1', -- SoloHunters
+    [33161040] = '69402a07bdc647b012c6a654eb0868a1',
+    [614697100] = '69402a07bdc647b012c6a654eb0868a1',
 }
 
 return games[game.CreatorId] or nil
