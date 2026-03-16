@@ -25,6 +25,7 @@ local games = {
 	[35757133] = 'https://api.luarmor.net/files/v4/loaders/8701b873d7fe9f2b58fa6433e589aa35.lua', -- SoloHunters
 	[33161040] = 'https://api.luarmor.net/files/v4/loaders/fcd34981d97c7cf7ad520ac4eeab2f68.lua', -- Bizarre
 	[614697100] = 'https://api.luarmor.net/files/v4/loaders/15386e1ac6d64a252dddf30f690fa5de.lua', -- AT
+	[1002185259] = 'https://api.luarmor.net/files/v4/loaders/cd10e92db7791a9864ad4ad55a764e64.lua', -- SP
 }
 
 if games[game.CreatorId] then
