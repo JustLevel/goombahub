@@ -19,6 +19,7 @@ local games = {
     [35757133] = '69402a07bdc647b012c6a654eb0868a1', -- SoloHunters
     [33161040] = '69402a07bdc647b012c6a654eb0868a1',
     [614697100] = '69402a07bdc647b012c6a654eb0868a1',
+    [1002185259] = 'e6bfd89f398ce73c0f4c176cf59594ce',
 }
 
 return games[game.CreatorId] or nil
