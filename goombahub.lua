@@ -26,7 +26,7 @@ local games = {
 	[33161040] = 'https://api.luarmor.net/files/v4/loaders/69402a07bdc647b012c6a654eb0868a1.lua', -- Bizarre
 	[614697100] = 'https://api.luarmor.net/files/v4/loaders/69402a07bdc647b012c6a654eb0868a1.lua', -- AT
 	[1002185259] = 'https://api.luarmor.net/files/v4/loaders/e6bfd89f398ce73c0f4c176cf59594ce.lua', -- SP
-	[126297188712308] = 'https://api.luarmor.net/files/v4/loaders/e6bfd89f398ce73c0f4c176cf59594ce.lua', -- AO
+	[33912907] = 'https://api.luarmor.net/files/v4/loaders/e6bfd89f398ce73c0f4c176cf59594ce.lua', -- AO
 }
 
 if games[game.CreatorId] then
