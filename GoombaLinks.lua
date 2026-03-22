@@ -67,7 +67,7 @@ local key_links = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_4-eHexubYaGzNo',
         lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_4_Lootlabs_-JCCmYjqHNTNI'
     },
-    [126297188712308]  = {
+    [33912907]  = {
         linkvertise = 'https://ads.luarmor.net/get_key?for=Free_Scripts_4-eHexubYaGzNo',
         lootlabs = 'https://ads.luarmor.net/get_key?for=Free_Scripts_4_Lootlabs_-JCCmYjqHNTNI'
     },
