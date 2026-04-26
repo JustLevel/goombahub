@@ -10216,7 +10216,7 @@ local service = setmetatable({},{__index = function(self,name)
 	self[name] = serv
 	return serv
 end})
-local plr = service.Players.LocalPlayer or service.Players.PlayerAdded:wait()
+local plr = game:GetService("Players").LocalPlayer or service.Players.PlayerAdded:wait()
 
 local create = function(data)
 	local insts = {}
