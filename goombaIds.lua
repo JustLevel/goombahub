@@ -21,6 +21,7 @@ local games = {
     [614697100] = '69402a07bdc647b012c6a654eb0868a1',
     [1002185259] = 'e6bfd89f398ce73c0f4c176cf59594ce',
     [33912907] = 'e6bfd89f398ce73c0f4c176cf59594ce',
+    [34783288] = 'e6bfd89f398ce73c0f4c176cf59594ce',
 }
 
 return games[game.CreatorId] or nil
